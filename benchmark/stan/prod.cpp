@@ -6,7 +6,8 @@ namespace adb {
 struct ProdFunc: ProdFuncBase
 {};
 
-BENCHMARK_TEMPLATE(BM_stan, ProdFunc)
+using matvar = Eigen::Matrix<stan::math::var, Eigen::Dynamic, 1>;
+BENCHMARK_TEMPLATE(BM_stan, ProdFunc, matvar)
     -> RangeMultiplier(2) -> Range(1, 1 << 14);
 
 } // namespace adb

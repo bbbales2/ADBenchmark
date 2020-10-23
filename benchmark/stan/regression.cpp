@@ -20,7 +20,8 @@ struct RegressionFunc: RegressionFuncBase
     }
 };
 
-BENCHMARK_TEMPLATE(BM_stan, RegressionFunc)
+using matvar = Eigen::Matrix<stan::math::var, Eigen::Dynamic, 1>;
+BENCHMARK_TEMPLATE(BM_stan, RegressionFunc, matvar)
     -> RangeMultiplier(2) -> Range(1, 1 << 14);
 
 } // namespace adb

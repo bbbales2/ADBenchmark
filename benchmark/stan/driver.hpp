@@ -4,7 +4,7 @@
 
 namespace adb {
 
-template <class F>
+template <class F, class V>
 static void BM_stan(benchmark::State& state)
 {
     F f;
@@ -17,8 +17,16 @@ static void BM_stan(benchmark::State& state)
 
     state.counters["N"] = x.size();
 
+    int i = 0;
     for (auto _ : state) {
-        stan::math::gradient(f, x, fx, grad_fx);
+      V x_var(x);
+      stan::math::var fx_var = f(x_var);
+
+      fx_var.grad();
+      if(i == 0)
+	grad_fx = x_var.adj();
+      stan::math::recover_memory();
+      i++;
     }
 
     // sanity-check that output gradient is good

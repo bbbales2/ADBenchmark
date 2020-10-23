@@ -15,7 +15,8 @@ struct MatrixProductFunc: MatrixProductFuncBase
     }
 };
 
-BENCHMARK_TEMPLATE(BM_stan, MatrixProductFunc)
+using matvar = Eigen::Matrix<stan::math::var, Eigen::Dynamic, 1>;
+BENCHMARK_TEMPLATE(BM_stan, MatrixProductFunc, matvar)
     -> RangeMultiplier(2) -> Range(1, 1 << 16);
 
 } // namespace adb
