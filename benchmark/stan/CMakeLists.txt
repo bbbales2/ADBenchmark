@@ -26,9 +26,9 @@ function(add_stan_executable name)
         ${PROJECT_SOURCE_DIR}/lib/stan-dev-math
         ${PROJECT_SOURCE_DIR}/lib/stan-dev-math/lib/tbb_2019_U8/include
         ${PROJECT_SOURCE_DIR}/lib/stan-dev-math/lib/boost_1.72.0
-        ${PROJECT_SOURCE_DIR}/lib/stan-dev-math/lib/sundials_5.2.0/include)
+        ${PROJECT_SOURCE_DIR}/lib/stan-dev-math/lib/sundials_5.6.1/include
+        ${PROJECT_SOURCE_DIR}/lib/stan-dev-math/lib/eigen_3.3.9)
     target_link_libraries(${exec}
-        Eigen3::Eigen
         FastAD::FastAD
         ${TBB_LIB}
         ${TBBMALLOC_LIB}

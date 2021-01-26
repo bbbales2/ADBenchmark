@@ -96,7 +96,7 @@ fi
 
 # setup STAN
 if [ ! -d "$stan" ]; then
-    git clone --depth 1 --branch v3.4.0-rc1 https://github.com/stan-dev/math.git $stan
+    git clone --depth 1 --branch v4.0.0 https://github.com/stan-dev/math.git $stan
     cd $stan
     echo "CXX=g++-10" > make/local
     make -j4 -f make/standalone math-libs
